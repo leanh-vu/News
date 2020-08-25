@@ -1,0 +1,110 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+body {
+    overflow-y: hidden;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9) ), url('./img/wall.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+#app {
+    height: 100%;
+}
+router_link {
+    text-decoration: none
+  }
+.button {
+  padding: 1rem 1.5rem;
+  font-size: 1em;
+  border-radius: 5px;
+  color: #000000;
+  transition: background-color 0.2s;
+  transition-timing-function: ease-out
+}
+
+.button-orange {
+  border: 1px #ffa06d solid;
+  background-color: #c53d13
+}
+.button-orange:hover {
+  border: #c53d13 1px solid;
+  background-color: #ff6e40;
+}
+.button-blue {
+  border: 1px #c3fdff solid;
+  background-color: #90caf9;
+}
+.button-blue:hover {
+  border: #5d99c6 1px solid;
+  background-color: #5d99c6;
+}
+.button-blue:focus {
+  outline:none;
+  background-color: #5d99c6;
+}
+.m-0 {
+  margin: 0
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.jump-enter-active {
+  animation: jump-in 0.5s;
+}
+.jump-leave-active {
+  animation: jump-in 0.5s reverse;
+}
+@keyframes jump-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0);
+  opacity: 0;
+  border-radius: 5px; 
+  }
+
+.scrollbar::-webkit-scrollbar {
+  border-radius: 6px;
+  width: 9px;
+  background-color: rgba(255, 255, 255, 0);
+  opacity: 0;
+  }
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+  background-color: #ff7043; 
+  }
+
+.inde-scroll {
+  position: relative;
+  overflow-y: scroll;
+  box-sizing: border-box
+}
