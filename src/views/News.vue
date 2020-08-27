@@ -1,27 +1,35 @@
 <template>
   <div class='container'>
     <div class="button-container">
-        <button @click="changeTopic('top')" class='button button-blue mb-05 button-fit'>Top headline</button>
-        <div class="dropdown">
-          <button class="dropbtn button">Topic</button>
+      <div class='logo-container'>
+        <button to="/" class='p-0 navbar-logo logo-button' @click="showNews">
+            <img class="navbar-logo" src="../../public/img/mylogo.png" alt="mylogo">
+        </button>
+        <div class='news-text'>
+          NEWS
+        </div>
+      </div>
+        <button @click="changeTopic('top')" class='button button-blue mb-05 button-fit mr-05'>Top headline</button>
+        <div class="dropdown mr-05">
+          <button class="dropbtn button button-blue">Topic</button>
           <div class="dropdown-content">
-              <button @click="changeTopic('bitcoin')" class='button button-blue mb-05 button-fit'>Bitcoin</button>
-              <button @click="changeTopic('apple')" class='button button-blue mb-05 button-fit'>Apple</button>
-              <button @click="changeTopic('earthquake')" class='button button-blue mb-05 button-fit'>Earthquake</button>
-              <button @click="changeTopic('animal')" class='button button-blue mb-05 button-fit'>Animal</button>
+              <button @click="changeTopic('bitcoin')" class='button button-purple  button-fit'>Bitcoin</button>
+              <button @click="changeTopic('apple')" class='button button-purple button-fit'>Apple</button>
+              <button @click="changeTopic('earthquake')" class='button button-purple button-fit'>Earthquake</button>
+              <button @click="changeTopic('animal')" class='button button-purple button-fit'>Animal</button>
           </div>
         </div>
-          <button @click="hideNews" class='button button-blue mb-05 button-fit'>Profile
-        </button>
+          <button @click="hideNews" class='button button-blue mb-05 button-fit'>Profile</button>
     </div>
     <div class="content-container inde-scroll scrollbar" @scroll="onScroll">
-      <div v-if='isNewsShow'>
-        <new-list :articlesArray='articlesArray'></new-list>
-
-      </div>
-      <div v-else>
-        <profile></profile>
-      </div>
+      <transition name="slide-fade">
+        <div v-if='isNewsShow'>
+          <new-list :articlesArray='articlesArray'></new-list>
+        </div>
+      </transition>
+    <transition name="slide-fade">
+        <profile v-if='!isNewsShow'></profile>
+    </transition>
     </div>
   </div>
 </template>
@@ -38,17 +46,65 @@
   .button-container {
     display: flex;
     width: 100%;
-    background-color: rgba(255, 255, 255, .3);
     border-radius: 5px;
+    padding: 0.5em;
   }
   .content-container {
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, .8);
     border-radius: 5px;
   }
   .image {
     width: 20vw;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+    padding-right: 1rem;
+  }
+  .news-text {
+    display: block;
+    color: white;
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 0 0.5rem;
+    height: fit-content;
+    transition: .5s ease;
+  }
+  .topnav {
+    background-color: rgba(255, 255, 255, 0);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0 0 5px 5px;
+  }
+  .p-0 {
+    padding: 0!important
+  }
+  .navbar-logo {
+    display: block;
+    height: 5vh;
+    transition: .5s ease;
+    padding-left: 2rem;
+  }
+  .navbar-logo :hover{
+    transform: scale(1.5);
+  }
+  .mr-05 {
+    margin-right: 0.5rem;
+  }
+  .logo-button {
+    background: none;
+    outline: none;
+    color: rgba(255, 255, 255, 0);
+      border: none;
+  }
+  .logo-button:active {
+      outline: none;
+      border: none;
   }
 </style>
 
@@ -84,6 +140,9 @@ export default {
   methods: {
     hideNews() {
       this.isNewsShow = false
+    },
+    showNews() {
+      this.isNewsShow = true
     },
     updateArticlesArray() {
       this.currentPage += 1

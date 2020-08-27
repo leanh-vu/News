@@ -6,8 +6,9 @@
             <div class='news-outline-container'>
                 <a class='open-modal-link' @click="showModal = true; currentNews=ar"><h2>{{ar.title}}</h2></a>
                 <div>{{ar.description}}</div>
-                <div>{{(new Date(ar.publishedAt)).toDateString()}}</div>
-                <div>Source: {{ar.source.name}}</div>
+                <div class='publish-date'>
+                    <div>{{(new Date(ar.publishedAt)).toDateString()}}</div>
+                </div>
             </div>
         </div>
     </div>
@@ -15,11 +16,15 @@
 <style scoped>
   .image {
     width: 20vw;
-    border-radius: 5px
+    border-radius: 10px;
+    padding: 0.5rem
   }
   .news-container {
     display: flex;
-    margin: 1rem
+    margin: 1rem;
+    background-color: rgba(255, 255, 255, .9);
+    border-radius: 10px;
+    padding: 0.5rem
   }
   .news-outline-container {
       margin-left: 1rem;
@@ -33,6 +38,11 @@
   }
   .open-modal-link :hover {
       color:#303f9f
+  }
+  .publish-date {
+      display: flex;
+      justify-content: flex-end;
+      font-style: italic;
   }
   
 </style>
