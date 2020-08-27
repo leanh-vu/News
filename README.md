@@ -1,4 +1,4 @@
-#News Reading
+## News Reading
 ```
 - Display News get from https://newsapi.org/
 - Top headline, User select and Profile tab
