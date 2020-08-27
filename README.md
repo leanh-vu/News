@@ -1,4 +1,10 @@
-# news_reading
+#News Reading
+```
+- Display News get from https://newsapi.org/
+- Top headline, User select and Profile tab
+- Infinite scrolling
+- Technology: VueJs, VueRouter, HTML, CSS, Javascript
+```
 
 ## Project setup
 ```
